@@ -5,7 +5,6 @@ var koa = require('koa'),
 mongoose = require('mongoose');
 app = koa();
 app.use(router(app));
-app.use(bodyParser());
 app.use(logger());
 
 app.post('/ajax', function* next() {
