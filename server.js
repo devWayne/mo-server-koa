@@ -1,9 +1,9 @@
 var koa = require('koa'),
 	router = require('koa-router'),
 	logger = require('koa-logger'),
-	parse = require('co-body');
-mongoose = require('mongoose');
-app = koa();
+	parse = require('co-body'),
+	mongoose = require('mongoose');
+var app = module.exports = koa();
 app.use(router(app));
 app.use(logger());
 
