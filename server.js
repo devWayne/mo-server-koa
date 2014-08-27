@@ -1,18 +1,10 @@
 var koa = require('koa'),
-	router = require('koa-router'),
 	logger = require('koa-logger'),
-	parse = require('co-body'),
-	mongoose = require('mongoose');
-var app = module.exports = koa();
-app.use(router(app));
-app.use(logger());
-
-app.post('/ajax', function* next() {
-	console.log(this.request.method);
-	console.log(this.request.header);
+	route = require('./route');
 	
-	var body = yield parse(this.request);
-	console.log(body);
-	this.body = body;
-});
+var app = module.exports = koa();
+
+app.use(logger());
+route(app);
+
 app.listen(3000);
