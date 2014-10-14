@@ -2,7 +2,7 @@
   "name": "MO-server",
   "description": "MO-server",
   "version": "0.0.1",
-  "repository": "https://github.com/devWayne/TG-server.git",
+  "repository": "https://github.com/mo-doc/mo-server.git",
   "dependencies": {
     "koa": "^0.8.0",
     "koa-logger": "^1.2.1",

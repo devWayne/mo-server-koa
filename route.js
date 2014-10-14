@@ -1,6 +1,6 @@
 var parse = require('co-body'),
 	router = require('koa-router'),
-	cpinfo = require('./model/cpinfo');
+	component = require('./model/component');
 
 
 module.exports = function(app) {
@@ -13,7 +13,7 @@ module.exports = function(app) {
 
 		var body = yield parse(this.request);
 		//console.log(body);
-		var code=cpinfo.addCpInfo(body)
+		var code=component.addComponent(body)
 		this.body = {
 			'code': code
 		};

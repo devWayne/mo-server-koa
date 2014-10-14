@@ -1,11 +1,11 @@
 mo-server
 =========
 
-##api
+#api
 
-#insert component info
+##insert component info
 
-  "/componentinfo"
+  POST:"/componentinfo"
   
   request:
   
@@ -13,7 +13,7 @@ mo-server
       keyword:'your component name',
       intro:'your component introduction',
       demo:'your component demo',
-      verrify:,
+      verrify:0,
       codelink:'git@yourcomponent'
   }
   
