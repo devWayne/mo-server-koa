@@ -4,7 +4,7 @@ var config = {
 		user: 'root',
 		password: ''
 	},
-	port:3000
+	port: 3000
 
 }
 

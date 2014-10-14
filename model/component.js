@@ -2,9 +2,9 @@ var mysql = require('mysql'),
 	config = require('../config');
 
 var connection = mysql.createConnection({
-	config.db.host: '127.0.0.1',
-	config.db.user: 'root',
-	config.db.password: ''
+	host: config.db.host,
+	user: config.db.user,
+	password: config.db.password
 });
 
 
@@ -22,4 +22,4 @@ function addComponent(info) {
 	
 }
 
-exports.addCpInfo = addCpInfo;
+exports.addComponent = addComponent;
