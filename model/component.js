@@ -9,11 +9,11 @@ var connection = mysql.createConnection({
 
 
 function addComponent(info) {
-	var insertSQL = "insert into modoc.component(keyword, intro, demo, verify, codelink) values('"+info.keyword+"','"+info.intro+"','"+info.demo+"',"+info.verify+",'"+info.codelink+"') ";
-	connection.query(insertSQL, function(err, rows) {
+	var insertSQL = "insert into modoc.component SET ?";
+	connection.query(insertSQL,info,function(err, rows) {
 		// connected! (unless `err` is set)
 		if(err){
-			return {code:500,msg:err}
+			return {code:500,msg:err.code}
 		}
 		else{
 			return 200;
@@ -21,5 +21,10 @@ function addComponent(info) {
 	});
 	
 }
+
+connection.on('error', function(err) {
+  console.log(err.code); // 'ER_BAD_DB_ERROR'
+});
+
 
 exports.addComponent = addComponent;

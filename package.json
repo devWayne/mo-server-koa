@@ -19,7 +19,7 @@
     "supertest": "*"
   },
   "scripts": {
-    "test": "make test"
+    "test": "mocha --harmony"
   },
   "engines": {
     "node": ">= 11.3"

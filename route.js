@@ -19,4 +19,9 @@ module.exports = function(app) {
 		};
 	});
 
+	app.post('/test',function *next(){
+		var body=yield parse(this.request);
+		this.body=body;
+	})
+
 };
