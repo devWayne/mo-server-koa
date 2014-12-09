@@ -1,7 +1,7 @@
 mo-server
 =========
 Mobile Doc
-[![Build Status](https://travis-ci.org/mo-doc/mo-server.svg?branch=master)](https://travis-ci.org/mo-doc/mo-server)
+[![Build Status](https://travis-ci.org/mo-doc/mo-server-koa.svg?branch=master)](https://travis-ci.org/mo-doc/mo-server-koa)
 
 
 #Get Started

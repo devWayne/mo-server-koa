@@ -1,30 +1,112 @@
-var mysql = require('mysql'),
-	config = require('../config');
+/**
+ * Module dependencies.
+ */
 
-var connection = mysql.createConnection({
-	host: config.db.host,
-	user: config.db.user,
-	password: config.db.password
+var mongoose = require('mongoose');
+//var config = require('config');
+
+
+
+var Schema = mongoose.Schema;
+
+/**
+ * Getters
+ */
+
+var getTags = function(tags) {
+    return tags.join(',');
+};
+
+/**
+ * Setters
+ */
+
+var setTags = function(tags) {
+    return tags.split(',');
+};
+
+/**
+ * Component Schema
+ */
+
+var ComponentSchema = new Schema({
+    title: {
+        type: String,
+        trim: true,
+        required: true,
+        index: {
+            unique: true
+        }
+    },
+    intro: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    demo: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    codelink: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    verify: {
+        type: Number,
+        default: 1
+    },
+    comments: [{
+        body: {
+            type: String,
+            default: ''
+        },
+        user: {
+            type: Schema.ObjectId,
+            ref: 'User'
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now
+        }
+    }],
+    keywords: {
+        type: [],
+        get: getTags,
+        set: setTags,
+        required: true
+    },
+    star: {
+        type: Number,
+        default: 1
+    },
+    classify: {
+        type: String,
+        default: '',
+        trim: true,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
+/**
+ * Validations
+ */
 
-function addComponent(info) {
-	var insertSQL = "insert into modoc.component SET ?";
-	connection.query(insertSQL,info,function(err, rows) {
-		// connected! (unless `err` is set)
-		if(err){
-			return {code:500,msg:err.code}
-		}
-		else{
-			return 200;
-		}
-	});
-	
+
+/**
+ * Methods
+ */
+
+ComponentSchema.methods = {
+
 }
 
-connection.on('error', function(err) {
-  console.log(err.code); // 'ER_BAD_DB_ERROR'
-});
 
 
-exports.addComponent = addComponent;
+mongoose.model('Component', ComponentSchema);
+
