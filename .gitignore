@@ -71,5 +71,5 @@ test/*.mp4
 test/images/originalSideways.jpg.2
 
 .DS_Store
-.swp
-.swo
+*.swp
+*.swo
